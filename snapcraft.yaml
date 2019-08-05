@@ -1,0 +1,23 @@
+name: converter-pybee
+version: '1.0'
+summary: Testing temperature conversion app for pybee
+description: |
+  Can a toga app be turned into a snap app?
+base: core18
+confinement: devmode
+parts:
+ converter-pybee:
+   plugin: python
+   source: .
+   python-version: python3
+   after: [desktop-gtk3]
+   python-packages: [toga, toga-gtk==0.3.0.dev11]
+   stage-packages: [python3, python3-gi, gir1.2-gtk-3.0, libglib2.0-bin]
+apps:
+ converter-pybee:
+   command: desktop-launch python3 -s -m converter
+   plugs:
+     - desktop
+     - desktop-legacy
+     - wayland
+
